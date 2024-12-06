@@ -1,0 +1,5 @@
+creation_rules:
+  - gcp_kms: projects/keen-bongo-400523/locations/global/keyRings/key-for-helm/cryptoKeys/my-key2
+    # Specify any file patterns you want to auto-encrypt
+    path_regex: '.*\.yaml$'
+    encrypted_regex: '^(secrets)$'
