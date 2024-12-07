@@ -1,14 +1,14 @@
 wp:
   name: wp-app
   labels:
-    app: wp-app
+    id: c0905659
+    app: wp
     env: dev
-    stack: wordpress
   image:
     repository: wordpress
     tag: latest
     pullPolicy: Always
-  replicas: 5
+  replicas: 2
   rollingUpdate:
     maxSurge: 1
     maxUnavailable: 1
@@ -21,7 +21,7 @@ wp:
       memory: "256Mi"
   configmap:
     ## KEY: "value"
-    WORDPRESS_DB_HOST: "wp-database.wpdb.svc.cluster.local:3306"
+    WORDPRESS_DB_HOST: "wp-database.db.svc.cluster.local:3306"
     WORDPRESS_DB_USER: wordpress
     WORDPRESS_DB_NAME: wordpress
     APP_ENV: dev

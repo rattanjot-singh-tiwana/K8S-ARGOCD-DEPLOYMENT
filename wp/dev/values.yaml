@@ -1,18 +1,18 @@
 wp:
-  name: wpapp
+  name: wp-app
   labels:
+    id: c0905659
     app: wp
     env: dev
-    stack: wordpress
   image:
     repository: wordpress
     tag: latest
     pullPolicy: Always
-  replicas: 10
+  replicas: 2
   configmap:
     ## KEY: "value"
     APP_ENV: "dev"
-    WORDPRESS_DB_HOST: "wp-database.wpdb.svc.cluster.local"
+    WORDPRESS_DB_HOST: "wp-database.db.svc.cluster.local"
     WORDPRESS_DB_NAME: "wordpress"
     WORDPRESS_DB_USER: "wordpress"
   containerPorts:

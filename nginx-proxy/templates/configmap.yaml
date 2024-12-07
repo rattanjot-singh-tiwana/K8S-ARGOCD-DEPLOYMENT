@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configMap.name }}
+  labels:
+    id: {{ .Values.labels.id }}
+    app: {{ .Values.labels.app }}
+    env: {{ .Values.labels.env }}
+data:
+  default.conf: |
+{{ .Values.configMap.config | indent 4 }}

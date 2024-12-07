@@ -1,12 +1,12 @@
 db:
   name: wp-database
   labels:
+    id: c0905659
     app: db
     env: dev
-    stack: wordpress
   image:
     repository: mariadb
-    tag: latest
+    tag: 10.6.4-focal
     pullPolicy: Always
   replicas: 1
   configmap:
@@ -16,14 +16,3 @@ db:
     APP_ENV: dev
   containerPorts:
       mysql: 3306
-  # volume:
-  #     name: nginx-proxy-cache-store
-  #     mount:
-  #         path: /var/lib/mysql
-  #         name: nginx-proxy-cache-store
-  #     storage: 1T
-  #     nfs:
-  #         path: /shared_volume
-  #         server: dev-cache-filestore.internal.gdev.postmedia.digital
-  #     claim:
-  #         name: nginx-proxy-cache-store-claim

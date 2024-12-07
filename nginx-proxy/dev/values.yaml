@@ -1,0 +1,31 @@
+labels:
+  id: c0905659
+  app: nginx
+  env: dev
+
+deployment:
+  name: nginx-proxy
+  replicas: 1
+  image:
+    repository: nginx
+    tag: latest
+
+configMap:
+  name: nginx-config
+  config: |
+    server {
+      listen 80;
+
+      location / {
+        proxy_pass http://wp-app.wp.svc.cluster.local;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      }
+    }
+service:
+  name: nginx-service
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
